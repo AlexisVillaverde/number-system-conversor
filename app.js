@@ -1,9 +1,6 @@
 $(document).ready(function () {
   $("#decimal").on("input", function () {
     var decimal = parseInt($("#decimal").val());
-    var binary = parseInt($("#binary").val());
-    var octal = parseInt($("#octal").val());
-    var hexadecimal = $("#hexadecimal").val();
 
     if (!isNaN(decimal)) {
       console.log("Decimal: " + decimal);
@@ -16,6 +13,7 @@ $(document).ready(function () {
   });
 
   $("#binary").on("input", function () {
+    this.value = this.value.replace(/[^01]/g, '');
     var binary = $("#binary").val();
     var decimalValue = parseInt(binary, 2);
 
@@ -42,6 +40,7 @@ $(document).ready(function () {
   });
 
   $("#hexadecimal").on("input", function () {
+    this.value = this.value.replace(/[^0-9a-fA-F]/g, '');
     var hexStr = $("#hexadecimal").val();
     var decimal = parseInt(hexStr, 16);
 
